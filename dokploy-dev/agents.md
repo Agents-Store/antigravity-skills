@@ -1,6 +1,6 @@
 # Agents for dokploy-dev
 
-> Dokploy self-hosted PaaS development plugin (aligned with Dokploy v0.29.5). Deploy applications, provision 6 database types (Postgres, MySQL, MariaDB, MongoDB, Redis, LibSQL), manage domains and Docker Compose stacks, AND debug failed deployments end-to-end — reads runtime logs of every container (including each container in a Docker Compose stack) over the API/MCP with tail/since/search, plus AI-powered log analysis (ai-analyzeLogs), Docker container introspection, Traefik diagnosis, and a guided recovery chain. Complete MCP/REST coverage: all 526 v0.29.5 operations across 49 categories indexed with params. Uses the official @dokploy/mcp server plus debugging-focused slash commands including /compose-logs.
+> Dokploy self-hosted PaaS development plugin (aligned with Dokploy v0.29.14). Deploy applications, provision 6 database types (Postgres, MySQL, MariaDB, MongoDB, Redis, LibSQL), manage domains and Docker Compose stacks, AND debug failed deployments end-to-end — reads runtime logs of every container (including each container in a Docker Compose stack) over the API/MCP with tail/since/search, plus AI-powered log analysis (ai-analyzeLogs), Docker container introspection, Traefik diagnosis, and a guided recovery chain. Complete MCP/REST coverage: all 546 v0.29.14 operations across 50 categories indexed with params — covers forward-auth SSO domain protection, SCIM provisioning, build concurrency, and the rewritten @dokploy/cli (546 auto-generated commands incl. read-logs). Uses the official @dokploy/mcp server plus debugging-focused slash commands including /compose-logs.
 
 Canonical: https://github.com/agents-store/claude-public-plugins/tree/main/plugins/dokploy-dev
 
@@ -64,7 +64,8 @@ You are a Dokploy development assistant. Help users deploy applications, manage 
 - Deployment workflows: git push, Docker image, Docker Compose, preview deployments
 - AI router (v0.29+) — provider-agnostic LLM integration. `ai-analyzeLogs { aiId, logs, context }` takes log **text** you fetched (not a `deploymentId`); `ai-suggest` for recommendations
 - Recovery chain — `killBuild` / `cancelDeployment` / `cleanQueues` / `dropDeployment` / `rollback-rollback`
-- Reading logs (Dokploy v0.29.5, all over MCP — no SSH/Beszel): **build** log = `deployment-readLogs { deploymentId, tail }`; **app runtime** = `application-readLogs { applicationId, tail, since, search }`; **compose** = read every container — enumerate via `docker-getContainersByAppNameMatch { appName, appType: "docker-compose" }` then loop `compose-readLogs { composeId, containerId, tail, since, search }`; **db** = `{type}-readLogs`. Use the `read-logs` skill and `/dokploy-dev:compose-logs`
+- Reading logs (Dokploy v0.29.0+ (current v0.29.14), all over MCP — no SSH/Beszel): **build** log = `deployment-readLogs { deploymentId, tail }`; **app runtime** = `application-readLogs { applicationId, tail, since, search }`; **compose** = read every container — enumerate via `docker-getContainersByAppNameMatch { appName, appType: "docker-compose" }` then loop `compose-readLogs { composeId, containerId, tail, since, search }`; **db** = `{type}-readLogs`. Use the `read-logs` skill and `/dokploy-dev:compose-logs`
+- Forward-auth (enterprise): SSO gate in front of app domains via `forwardAuth-*` tools + `domain.forwardAuthEnabled`; SCIM provisioning via `scim-*`; build concurrency via `settings-updateBuildsConcurrency` / `server-updateBuildsConcurrency`
 
 ## Important Guidelines
 
