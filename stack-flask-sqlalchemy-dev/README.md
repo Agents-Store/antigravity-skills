@@ -1,29 +1,24 @@
-# stack-flask-sqlalchemy-dev (Antigravity skills)
+# stack-flask-sqlalchemy-dev (Antigravity plugin)
 
 Flask + SQLAlchemy stack dev plugin for Agents Store. Integration patterns for app factory wiring, blueprint-model coordination, Flask-Login + SQLAlchemy auth, Jinja2 + query data, and full-feature recipes.
 
 ## Install
 
-Project-scoped:
+Workspace-scoped:
 ```bash
-cp -r skills/* /path/to/your-project/.agent/skills/
+agy plugin install ./stack-flask-sqlalchemy-dev
 ```
+Copies this directory to `.agents/plugins/stack-flask-sqlalchemy-dev/` in the current workspace.
 
-User-global:
+Global:
 ```bash
-cp -r skills/* ~/.gemini/antigravity/skills/
+agy plugin install --global ./stack-flask-sqlalchemy-dev
 ```
+Copies this directory to `~/.gemini/config/plugins/stack-flask-sqlalchemy-dev/` instead.
 
-## Skills (4)
+## Workflows (UNVERIFIED)
 
-- `stack-flask-sqlalchemy-dev-auth-integration` — Use when the user asks about "Flask-Login with SQLAlchemy", "user authentication", "login registration flow", "password hashing", "protect routes", "current_user with database", "session management Flask", or needs patterns for integrating Flask-Login authentication with SQLAlchemy user models.
-
-- `stack-flask-sqlalchemy-dev-flask-sqlalchemy-wiring` — Use when the user asks about "connect Flask to SQLAlchemy", "Flask-SQLAlchemy wiring", "blueprint model integration", "pass query data to template", "form to database", "render database data in template", "Flask model view pattern", or needs patterns for connecting Flask routes, SQLAlchemy models, and Jinja2 templates.
-
-- `stack-flask-sqlalchemy-dev-full-feature` — Use when the user asks to "add a new feature", "create a new page", "build CRUD for a new entity", "add a new section to the app", "implement a full feature end-to-end", or needs a step-by-step recipe for building a complete feature across Flask + SQLAlchemy layers.
-
-- `stack-flask-sqlalchemy-dev-init-project` — Use when the user asks to "set up Flask project", "initialize Flask SQLAlchemy project", "scaffold Flask app", "create Flask project structure", "bootstrap Flask application", or needs to set up a new Flask + SQLAlchemy project from scratch with all integrations wired.
-
+The `workflows/*.md` directory convention is **not confirmed by official Antigravity documentation** as of 2026-08-17. If workflows aren't picked up automatically after install, paste their content manually via the editor's "+ Workspace" button.
 
 ## Source
 

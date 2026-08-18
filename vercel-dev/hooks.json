@@ -1,0 +1,66 @@
+{
+  "PreToolUse": [
+    {
+      "matcher": "Read|Edit|Write|Bash",
+      "hooks": [
+        {
+          "type": "command",
+          "command": "node \"./hooks/pretooluse-skill-inject.mjs\"",
+          "timeout": 5
+        }
+      ]
+    },
+    {
+      "matcher": "Agent",
+      "hooks": [
+        {
+          "type": "command",
+          "command": "node \"./hooks/pretooluse-subagent-spawn-observe.mjs\"",
+          "timeout": 5
+        }
+      ]
+    }
+  ],
+  "PostToolUse": [
+    {
+      "matcher": "Bash",
+      "hooks": [
+        {
+          "type": "command",
+          "command": "node \"./hooks/posttooluse-shadcn-font-fix.mjs\"",
+          "timeout": 5
+        },
+        {
+          "type": "command",
+          "command": "node \"./hooks/posttooluse-verification-observe.mjs\"",
+          "timeout": 5
+        },
+        {
+          "type": "command",
+          "command": "node \"./hooks/posttooluse-telemetry.mjs\"",
+          "timeout": 5
+        },
+        {
+          "type": "command",
+          "command": "node \"./hooks/posttooluse-bash-chain.mjs\"",
+          "timeout": 5
+        }
+      ]
+    },
+    {
+      "matcher": "Write|Edit",
+      "hooks": [
+        {
+          "type": "command",
+          "command": "node \"./hooks/posttooluse-validate.mjs\"",
+          "timeout": 5
+        },
+        {
+          "type": "command",
+          "command": "node \"./hooks/posttooluse-telemetry.mjs\"",
+          "timeout": 5
+        }
+      ]
+    }
+  ]
+}

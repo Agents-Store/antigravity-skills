@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "directus": {
+      "serverUrl": "${NEXT_PUBLIC_DIRECTUS_URL}/mcp",
+      "headers": {
+        "Authorization": "Bearer ${DIRECTUS_ADMIN_TOKEN}"
+      }
+    }
+  }
+}

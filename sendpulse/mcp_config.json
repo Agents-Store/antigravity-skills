@@ -1,0 +1,7 @@
+{
+  "mcpServers": {
+    "sendpulse": {
+      "serverUrl": "https://mcp.sendpulse.com/mcp"
+    }
+  }
+}

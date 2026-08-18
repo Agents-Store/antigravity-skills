@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "nocodb": {
+      "serverUrl": "${NOCODB_MCP_URL}",
+      "headers": {
+        "xc-mcp-token": "${NOCODB_MCP_TOKEN}"
+      }
+    }
+  }
+}

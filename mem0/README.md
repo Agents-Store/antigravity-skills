@@ -1,26 +1,29 @@
-# mem0 (Antigravity skills)
+# mem0 (Antigravity plugin)
 
 Mem0 memory management plugin. Store, search, update, and organize memories with semantic search, batch operations, file attachments, and change history tracking via MCP tools.
 
 ## Install
 
-Project-scoped:
+Workspace-scoped:
 ```bash
-cp -r skills/* /path/to/your-project/.agent/skills/
+agy plugin install ./mem0
 ```
+Copies this directory to `.agents/plugins/mem0/` in the current workspace.
 
-User-global:
+Global:
 ```bash
-cp -r skills/* ~/.gemini/antigravity/skills/
+agy plugin install --global ./mem0
 ```
+Copies this directory to `~/.gemini/config/plugins/mem0/` instead.
 
-## Skills (5)
+## Workflows (UNVERIFIED)
 
-- `mem0-examples` — Tool call patterns, end-to-end workflow examples, and scenario references. This skill should be used when the user needs reference implementations, complete examples, or tool call patterns.
-- `mem0-file-management` — File management — attach files to memories and search file content via vector search. This skill should be used when the user asks to upload documents, attach files, or search within attached files.
-- `mem0-history-tracking` — Memory history and change tracking — view evolution of memories over time, audit modifications, and track knowledge changes. This skill should be used when the user asks to see memory changes, audit modifications, or track how information evolved.
-- `mem0-memory-crud` — Memory CRUD operations — add, get, update, delete memories, and batch operations. This skill should be used when the user asks to create, read, update, or delete memories, or perform bulk memory management.
-- `mem0-search-retrieval` — Search and retrieval — semantic search, listing, filtering, and relevance tuning. This skill should be used when the user asks to find memories, search knowledge, list stored information, or tune search results.
+The `workflows/*.md` directory convention is **not confirmed by official Antigravity documentation** as of 2026-08-17. If workflows aren't picked up automatically after install, paste their content manually via the editor's "+ Workspace" button.
+
+## MCP servers
+
+Configured in `mcp_config.json`. Required environment variables:
+
 
 ## Source
 

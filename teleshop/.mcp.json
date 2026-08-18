@@ -1,8 +1,0 @@
-{
-  "mcpServers": {
-    "teleshop": {
-      "type": "http",
-      "url": "https://mcp.teleshop.pro/"
-    }
-  }
-}

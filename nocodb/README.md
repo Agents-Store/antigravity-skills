@@ -1,29 +1,31 @@
-# nocodb (Antigravity skills)
+# nocodb (Antigravity plugin)
 
 NocoDB database development plugin. Manage tables, records, columns, views, relations, formulas, rollups, lookups, filtering, sorting, search, aggregation, webhooks, and filter/sort management via MCP tools.
 
 ## Install
 
-Project-scoped:
+Workspace-scoped:
 ```bash
-cp -r skills/* /path/to/your-project/.agent/skills/
+agy plugin install ./nocodb
 ```
+Copies this directory to `.agents/plugins/nocodb/` in the current workspace.
 
-User-global:
+Global:
 ```bash
-cp -r skills/* ~/.gemini/antigravity/skills/
+agy plugin install --global ./nocodb
 ```
+Copies this directory to `~/.gemini/config/plugins/nocodb/` instead.
 
-## Skills (8)
+## Workflows (UNVERIFIED)
 
-- `nocodb-advanced-queries` — Advanced data queries — search, aggregate, group by, complex filters. This skill should be used when the user asks to perform complex queries, aggregate data, group records, or search with advanced filter logic.
-- `nocodb-column-field-management` — Column/field types, relations, lookups, rollups, formulas. This skill should be used when the user asks to add columns, configure field types, set up relations, lookups, rollups, or formulas.
-- `nocodb-examples` — Tool call patterns, end-to-end workflow examples, and scenario references. This skill should be used when the user needs reference implementations, complete examples, or tool call patterns.
-- `nocodb-record-operations` — Record CRUD, filtering, sorting, bulk operations. This skill should be used when the user asks to create, read, update, or delete records, filter or search data, bulk import, or aggregate values.
-- `nocodb-schema-design` — Schema design best practices — entity modeling, relation patterns, creation order, formulas, views. This skill should be used when the user asks to design a database schema, plan tables and relationships, or build CRM/ERP/project databases.
-- `nocodb-table-management` — Table CRUD operations — create, list, get, delete tables. This skill should be used when the user asks to create a table, list existing tables, or manage table structure.
-- `nocodb-view-management` — View types — Grid, Kanban, Gallery, Form, Calendar. This skill should be used when the user asks to create or configure views, set up a kanban board, build a form, or manage view filters and sorts.
-- `nocodb-webhook-management` — Webhook management — create, list, delete, and test webhooks for table events. This skill should be used when the user asks to set up webhooks, configure event notifications, or integrate with external systems.
+The `workflows/*.md` directory convention is **not confirmed by official Antigravity documentation** as of 2026-08-17. If workflows aren't picked up automatically after install, paste their content manually via the editor's "+ Workspace" button.
+
+## MCP servers
+
+Configured in `mcp_config.json`. Required environment variables:
+
+- `NOCODB_MCP_TOKEN`
+- `NOCODB_MCP_URL`
 
 ## Source
 

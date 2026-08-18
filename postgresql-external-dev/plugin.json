@@ -1,0 +1,5 @@
+{
+  "$schema": "https://antigravity.google/schemas/v1/plugin.json",
+  "name": "postgresql-external-dev",
+  "description": "PostgreSQL schema design for external database connections. Compatible SQL patterns for NocoDB and NocoBase — table creation, column types, relations, indexes, and anti-patterns."
+}

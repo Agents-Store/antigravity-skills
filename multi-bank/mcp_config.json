@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "monobank": {
+      "serverUrl": "${MONOBANK_MCP_URL}"
+    },
+    "privatbank": {
+      "serverUrl": "${PRIVATBANK_MCP_URL}"
+    }
+  }
+}

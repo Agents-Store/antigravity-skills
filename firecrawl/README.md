@@ -1,28 +1,30 @@
-# firecrawl (Antigravity skills)
+# firecrawl (Antigravity plugin)
 
 Firecrawl web scraping and search plugin. Scrape URLs, crawl sites, search the web, map site structures, extract structured data, batch scraping, autonomous research agents, and cloud browser sessions via MCP tools.
 
 ## Install
 
-Project-scoped:
+Workspace-scoped:
 ```bash
-cp -r skills/* /path/to/your-project/.agent/skills/
+agy plugin install ./firecrawl
 ```
+Copies this directory to `.agents/plugins/firecrawl/` in the current workspace.
 
-User-global:
+Global:
 ```bash
-cp -r skills/* ~/.gemini/antigravity/skills/
+agy plugin install --global ./firecrawl
 ```
+Copies this directory to `~/.gemini/config/plugins/firecrawl/` instead.
 
-## Skills (7)
+## Workflows (UNVERIFIED)
 
-- `firecrawl-agent-research` — Autonomous research agent — start complex web research tasks, get structured results. This skill should be used when the user asks for multi-site exploration, open-ended web research, or deep-dive analysis across multiple sources.
-- `firecrawl-batch-operations` — Batch scraping — scrape multiple URLs in a single request with rate limiting and progress tracking. This skill should be used when the user asks to scrape multiple pages at once, process a list of URLs, or bulk extract content.
-- `firecrawl-browser-sessions` — Cloud browser sessions — create sessions, execute code, interact with dynamic pages. This skill should be used when the user needs to interact with SPAs, handle authentication flows, or execute browser automation on JavaScript-heavy sites.
-- `firecrawl-crawling` — Multi-page crawling and site mapping. This skill should be used when the user asks to crawl an entire website, map all URLs on a site, discover site structure, or scrape multiple pages from a domain.
-- `firecrawl-examples` — Tool call patterns, end-to-end workflow examples, and scenario references. This skill should be used when the user needs reference implementations, complete examples, or tool call patterns.
-- `firecrawl-scraping` — Single URL scraping — formats, selectors, wait strategies, headers. This skill should be used when the user asks to scrape a web page, get content from a URL, convert a page to markdown, or extract text from a site.
-- `firecrawl-search-extract` — Web search and structured data extraction. This skill should be used when the user asks to search the web, extract structured data from pages into JSON, research a topic using online sources, or perform competitive analysis.
+The `workflows/*.md` directory convention is **not confirmed by official Antigravity documentation** as of 2026-08-17. If workflows aren't picked up automatically after install, paste their content manually via the editor's "+ Workspace" button.
+
+## MCP servers
+
+Configured in `mcp_config.json`. Required environment variables:
+
+- `FIRECRAWL_MCP_URL`
 
 ## Source
 
