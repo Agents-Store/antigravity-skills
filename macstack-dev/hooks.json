@@ -1,0 +1,13 @@
+{
+  "Stop": [
+    {
+      "hooks": [
+        {
+          "type": "command",
+          "command": "python3 \"./hooks/stop-macstack-stale.py\"",
+          "timeout": 15
+        }
+      ]
+    }
+  ]
+}
