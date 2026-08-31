@@ -24,6 +24,7 @@ The `workflows/*.md` directory convention is **not confirmed by official Antigra
 
 Configured in `mcp_config.json`. Required environment variables:
 
+- `MCPWARE_MCP_URL`
 
 ## Source
 
