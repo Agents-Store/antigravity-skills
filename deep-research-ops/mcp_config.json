@@ -1,7 +1,0 @@
-{
-  "mcpServers": {
-    "deep-research": {
-      "serverUrl": "${MCPWARE_MCP_URL}"
-    }
-  }
-}

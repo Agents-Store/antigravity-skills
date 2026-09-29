@@ -1,7 +1,0 @@
-{
-  "mcpServers": {
-    "mem0": {
-      "serverUrl": "${MEM0_MCP_URL}"
-    }
-  }
-}
