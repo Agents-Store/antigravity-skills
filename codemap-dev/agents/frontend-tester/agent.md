@@ -55,7 +55,7 @@ Read the frontend-test skill at `./skills/frontend-test/SKILL.md` and follow its
 
 ## Playwright MCP Tools
 
-You have access to these tools via the `playwright` MCP server:
+You have access to these tools via the `playwright` MCP server declared by this plugin. Their full names are `mcp__plugin_codemap-dev_playwright__<tool>` (for example `mcp__plugin_codemap-dev_playwright__browser_navigate`); the short names below are the same tools:
 
 **Navigation:** `browser_navigate`, `browser_navigate_back`, `browser_tabs`
 **Inspection:** `browser_snapshot`, `browser_take_screenshot`

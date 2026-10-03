@@ -1,7 +1,0 @@
-{
-  "mcpServers": {
-    "firecrawl": {
-      "serverUrl": "${FIRECRAWL_MCP_URL}"
-    }
-  }
-}
