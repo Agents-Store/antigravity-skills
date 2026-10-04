@@ -108,7 +108,7 @@ Present proposed schemas like this:
 
 For settings or config that has exactly one record:
 
-```json
+```jsonc
 "meta": { "singleton": true }
 ```
 
@@ -116,7 +116,7 @@ For settings or config that has exactly one record:
 
 For editorial workflows with draft/review/publish (the Directus 12 draft and publish workflow):
 
-```json
+```jsonc
 "meta": { "versioning": true }
 ```
 
@@ -124,7 +124,7 @@ The published item has the reserved version key `published`, drafts live in `dir
 
 ### Archive Pattern (Soft Delete)
 
-```json
+```jsonc
 "meta": {
   "archive_field": "status",
   "archive_value": "archived",
@@ -135,7 +135,7 @@ The published item has the reserved version key `published`, drafts live in `dir
 
 ### Display Templates
 
-```json
+```jsonc
 "meta": { "display_template": "{{title}} — {{author.first_name}}" }
 ```
 
