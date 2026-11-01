@@ -2,7 +2,7 @@
 
 Turn requirements nobody scheduled into well-described tasks, edit tasks and milestones, and reconcile TASKS.md with the team's own tracker
 
-Arguments: add <what> | sync | status | milestone <id> | (empty = find unplanned work)
+Arguments: [add <what> | sync | status | milestone <id> | (empty = find unplanned work)]
 
 Use `macstack-dev:planning`.
 

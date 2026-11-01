@@ -6,6 +6,8 @@ Arguments: <collection> <field=value> [field=value...]
 
 # Create Item
 
+Follow the `item-operations` skill (`./skills/item-operations/SKILL.md`) for the query syntax, filters and batch rules; read it before the first call.
+
 ## Arguments
 
 - `collection` (required) — Collection name

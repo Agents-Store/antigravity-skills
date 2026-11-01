@@ -8,6 +8,8 @@ Arguments: <project> [--format start-stop-continue|daki|4ls]
 
 Run a sprint retrospective — present metrics, collect team feedback, create action items, save notes.
 
+Method and rules: the `plane-ops:sprint-review-retro` skill.
+
 ## Arguments
 Format: `<project> [--format start-stop-continue|daki|4ls]`
 - project: Project name or identifier (required)

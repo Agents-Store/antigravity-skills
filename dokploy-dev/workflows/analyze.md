@@ -8,7 +8,7 @@ Arguments: deployment-id|app-name-or-id|compose-name-or-id
 
 Pipeline around `ai-analyzeLogs`: fetch the relevant log text, then ask the configured AI provider for a root cause + suggested fix. `ai-analyzeLogs` takes the **log text** (not a `deploymentId`) plus an `aiId` and a `context`.
 
-Follow the `read-logs` skill (`./skills/read-logs/SKILL.md`) §5 for the analyze step.
+Follow the `ai-assist` skill (`./skills/ai-assist/SKILL.md`), Step 3, for the analyze step. The log text comes from the `read-logs` skill (§1 runtime logs, §3 build logs, §5 hand-off to AI triage).
 
 ## Arguments
 

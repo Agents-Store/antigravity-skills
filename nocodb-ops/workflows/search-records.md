@@ -8,6 +8,8 @@ Arguments: <table-name> <query>
 
 Search for records containing a keyword across text fields.
 
+The filter and where syntax, operators and sorting are written down in `./skills/search-filter/SKILL.md`; read it before the first step.
+
 ## Arguments
 
 Parse from "$ARGUMENTS":

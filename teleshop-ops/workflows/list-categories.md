@@ -2,11 +2,13 @@
 
 List all product categories with optional search
 
-Arguments: --search <query>
+Arguments: [--search <query>]
 
 # List Categories
 
 List all product categories in the Teleshop store.
+
+Method and rules: the `teleshop-ops:category-management` skill.
 
 ## Arguments
 Format: `[--search <query>]`

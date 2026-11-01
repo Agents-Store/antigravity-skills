@@ -6,6 +6,8 @@ Arguments: [--folder <name>] [--type <mime-prefix>]
 
 # List Files
 
+Follow the `file-management` skill (`./skills/file-management/SKILL.md`) for the files, folders and asset tools; read it before the first call.
+
 ## Arguments
 
 - `--folder <name>` — Filter by folder name

@@ -6,6 +6,8 @@ Arguments: <input-file> --to <format>
 
 # Convert Document
 
+Follow the `document-generator` skill (`./skills/document-generator/SKILL.md`), section Format Conversion, for the engines and the file naming; read it before Step 1.
+
 Convert a document between formats using pandoc.
 
 ## Arguments

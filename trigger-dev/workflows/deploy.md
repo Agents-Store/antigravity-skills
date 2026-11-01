@@ -6,6 +6,8 @@ Arguments: [staging|prod] [--profile <name>]
 
 # Deploy Tasks
 
+Method and rules: the `trigger-dev:deployment` skill.
+
 1. Determine target environment from arguments (default: prod; `production` is accepted and means `prod`)
 2. Verify `trigger.config.ts` exists
 3. Build the deploy command:

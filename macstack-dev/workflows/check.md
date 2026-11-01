@@ -2,7 +2,7 @@
 
 Validate the spec and the documents, report where the project stands and what to run next, or audit the implementation against the documents
 
-Arguments: --docs | --code | --new | (empty = spec + documents + dashboard)
+Arguments: [--docs | --code | --new | (empty = spec + documents + dashboard)]
 
 Read-only in every mode. Nothing here writes to the spec or to a client document.
 

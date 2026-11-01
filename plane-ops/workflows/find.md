@@ -8,6 +8,8 @@ Arguments: <query> [--project name] [--state name] [--assignee user] [--label na
 
 Quick search for Plane work items. Accepts a free-text query, an identifier (`PROJ-42`), or filter flags.
 
+Method and rules: the `plane-ops:work-items` skill.
+
 ## Arguments
 
 Format: `<query> [flags...]`

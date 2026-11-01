@@ -6,7 +6,7 @@ Arguments: <type> <project> [args...]
 
 # Publish Report
 
-Generate and publish a Plane project page using a template from the `pages-publishing` skill.
+Generate and publish a Plane project page using a template from the `plane-ops:pages-publishing` skill.
 
 ## Arguments
 

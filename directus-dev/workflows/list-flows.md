@@ -4,6 +4,8 @@ List all automation flows in Directus
 
 # List Flows
 
+Follow the `flow-automation` skill (`./skills/flow-automation/SKILL.md`) for how flows, triggers and operations work; read it before the first call.
+
 ## Process
 
 1. Call `flows` tool with:

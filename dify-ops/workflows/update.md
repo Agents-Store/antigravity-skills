@@ -8,6 +8,8 @@ Arguments: [tag-or-version|main] [--yes] [--weaviate-staged]
 
 Update a self-hosted Dify instance without losing data: read what the target release changes, stop the stack and archive `volumes/`, and only then merge the release tag into the local `dev` branch, sync environment variables, pull images and start. Nothing is changed before the plan in Step 3 is printed and confirmed.
 
+The branch model, the backup rules and the rollback this command follows are written down in `./skills/update-workflow/SKILL.md`; read it before Step 1.
+
 The Bash tool does not keep shell variables between calls. Step 2 prints `DIFY_ROOT`, `DOCKER_DIR`, `CUR`, `TGT`, `TARGET`, `TARGET_REF` and `STAGED`; carry them into the next block as plain assignments. Step 4 writes everything later steps need to `<backup-dir>/state.env` (paths, branch names, commit ids and the compose project — no secrets), and every block from Step 5 on starts with `set -a; . <backup-dir>/state.env; set +a`.
 
 ## Arguments
@@ -183,8 +185,6 @@ TARGET="<TARGET>"; TARGET_REF="<TARGET_REF>"               # from Step 2
 # git state for the rollback — nothing has touched git yet
 START_BRANCH=$(git -C "$DIFY_ROOT" branch --show-current)
 START_COMMIT=$(git -C "$DIFY_ROOT" rev-parse HEAD)
-DEV_TIP=$(git -C "$DIFY_ROOT" rev-parse -q --verify refs/heads/dev || echo "$START_COMMIT")
-# compose project: detect it while the stack is still up, then pin it for every docker compose call below
-PROJECT_NAME=$(docker ps --
+DEV_TIP=$(git -C "$DIFY_ROOT" rev-parse -q --verify refs/heads/dev || e
 
 <!-- truncated: content exceeds the target's size limit -->

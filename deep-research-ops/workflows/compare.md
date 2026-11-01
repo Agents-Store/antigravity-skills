@@ -6,7 +6,7 @@ Arguments: <item1> vs <item2> [vs <item3>...] [--criteria <criteria>]
 
 # Compare
 
-Comparative analysis of multiple items using the Comparison Table template. See CONNECTORS.md for provider mapping.
+Comparative analysis of multiple items using the Comparison Table template. Follow the competitive-analysis path of `./skills/deep-research/SKILL.md` and the template in `./skills/report-generation/SKILL.md`. See CONNECTORS.md for provider mapping.
 
 ## Process
 

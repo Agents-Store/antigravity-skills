@@ -2,7 +2,7 @@
 
 Take in anything the client sends — a document, a returned review package, or a correction typed straight into this chat — and merge it through delta → ruling → apply
 
-Arguments: file in inbox/ | what to change,in your own words | (empty = whatever is unprocessed)
+Arguments: [file in inbox/ | what to change, in your own words | (empty = whatever is unprocessed)]
 
 Use `macstack-dev:intake`. It owns the loop; this command only routes into it.
 

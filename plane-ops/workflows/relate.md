@@ -8,6 +8,8 @@ Arguments: <relation> <project> <from-item> <to-item>
 
 Create or remove a typed relation between two work items.
 
+Method and rules: the `plane-ops:work-items` skill.
+
 ## Arguments
 
 Format: `<relation> <project> <from-item> <to-item>`

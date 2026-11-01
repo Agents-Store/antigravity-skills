@@ -8,6 +8,8 @@ Arguments: <table-name> <field=value pairs>
 
 Create a new record in a NocoDB table.
 
+The record payloads, batch rules and verification are written down in `./skills/record-management/SKILL.md`; read it before the first step.
+
 ## Arguments
 
 Parse from "$ARGUMENTS":

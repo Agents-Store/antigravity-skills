@@ -8,6 +8,8 @@ Arguments: <addon-id> [--variables <json>]
 
 Manually trigger execution of a store addon.
 
+Method and rules: the `teleshop-ops:addon-management` skill.
+
 ## Arguments
 Format: `<addon-id> [--variables <json>]`
 - addon-id: The addon/workflow ID (required)

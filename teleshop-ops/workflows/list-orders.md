@@ -8,6 +8,8 @@ Arguments: [--status <status>] [--payment <type>] [--search <query>]
 
 List orders from the Teleshop store with optional filters.
 
+Method and rules: the `teleshop-ops:order-management` skill.
+
 ## Arguments
 Format: `[--status <status>] [--payment <type>] [--search <query>]`
 - --status: Filter by status (created, processing, awaiting, shipped, ready, completed, canceled)

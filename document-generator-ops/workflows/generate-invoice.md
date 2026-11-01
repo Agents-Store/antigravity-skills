@@ -6,6 +6,8 @@ Arguments: <invoice-number> [--company <name>] [--client <name>]
 
 # Generate Invoice
 
+Follow the `document-rules` skill (`./skills/document-rules/SKILL.md`) and the `document-generator` skill (`./skills/document-generator/SKILL.md`): the first holds the mandatory rules, the second the generation process. Read both before Step 1.
+
 Generate a professional PDF invoice with company header, itemized table, tax calculation, and payment details.
 
 ## Arguments

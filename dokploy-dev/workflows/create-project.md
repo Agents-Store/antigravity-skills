@@ -6,6 +6,8 @@ Arguments: <name> [--description <text>]
 
 # Create Project
 
+Follow the `mcp-patterns` skill (`./skills/mcp-patterns/SKILL.md`) for the project tool parameters and usage notes; read it before the first call.
+
 Create a new project on the Dokploy instance.
 
 ## Arguments

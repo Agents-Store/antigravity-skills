@@ -8,6 +8,8 @@ Arguments: [--search <query>] [--category <name>] [--status available|unavailabl
 
 List products from the Teleshop store with optional filters.
 
+Method and rules: the `teleshop-ops:product-management` skill.
+
 ## Arguments
 Format: `[--search <query>] [--category <name>] [--status available|unavailable|preorder] [--limit <n>]`
 - --search: Search products by title

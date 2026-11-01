@@ -6,6 +6,8 @@ Arguments: <title> [--format <docx|pdf>] [--type <annual|quarterly|project>]
 
 # Generate Report
 
+Follow the `document-rules` skill (`./skills/document-rules/SKILL.md`) and the `document-generator` skill (`./skills/document-generator/SKILL.md`): the first holds the mandatory rules, the second the generation process. Read both before Step 1.
+
 Generate a professional report with cover page, table of contents, structured sections, page numbers, and headers/footers.
 
 ## Arguments

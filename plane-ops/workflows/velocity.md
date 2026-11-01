@@ -8,6 +8,8 @@ Arguments: <project> [--sprints <count>]
 
 Calculate team velocity from completed sprints and show trend analysis.
 
+Method and rules: the `plane-ops:velocity-metrics` skill.
+
 ## Arguments
 Format: `<project> [--sprints <count>]`
 - project: Project name or identifier (required)

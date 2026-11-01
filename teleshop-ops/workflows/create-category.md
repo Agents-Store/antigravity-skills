@@ -8,6 +8,8 @@ Arguments: <title> [--parent <id>] [--orderBy cheap|expensive|novelty|popular]
 
 Create a new product category in the Teleshop store.
 
+Method and rules: the `teleshop-ops:category-management` skill.
+
 ## Arguments
 Format: `<title> [--parent <id>] [--orderBy cheap|expensive|novelty|popular]`
 - title: Category name (required)

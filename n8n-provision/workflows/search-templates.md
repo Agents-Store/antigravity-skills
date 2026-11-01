@@ -8,6 +8,8 @@ Arguments: <query> [--category <name>] [--nodes <nodeTypes>] [--mode <keyword|by
 
 Search the n8n.io official template library (12,900+ templates) for workflows matching a query. n8n-mcp searches a local database of about 2,350 of them; when it returns nothing, the search continues against the public API at `api.n8n.io`.
 
+The search modes, categories and result interpretation are written down in `./skills/template-discovery/SKILL.md`; read it before the first step.
+
 ## Arguments
 Format: `<query> [--category <name>] [--nodes <nodeTypes>] [--mode <keyword|by_nodes|by_task|by_metadata>]`
 - query: Search text (required)

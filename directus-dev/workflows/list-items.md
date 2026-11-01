@@ -6,6 +6,8 @@ Arguments: <collection> [--filter <field=value>] [--sort <field>] [--limit <n>]
 
 # List Items
 
+Follow the `item-operations` skill (`./skills/item-operations/SKILL.md`) for the query syntax, filters and batch rules; read it before the first call.
+
 ## Arguments
 
 - `collection` (required) — Collection name

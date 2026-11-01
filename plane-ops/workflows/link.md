@@ -8,6 +8,8 @@ Arguments: <action> <project> <item> [url] [title]
 
 Attach external URLs to a work item — pull requests, design docs, Figma boards, runbooks.
 
+Method and rules: the `plane-ops:work-items` skill.
+
 ## Arguments
 
 Format: `<action> <project> <item> [url] [title]`

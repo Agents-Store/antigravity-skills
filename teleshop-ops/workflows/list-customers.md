@@ -2,11 +2,13 @@
 
 List store customers with optional search
 
-Arguments: --search <query>
+Arguments: [--search <query>]
 
 # List Customers
 
 List customers of the Teleshop store.
+
+Method and rules: the `teleshop-ops:customer-management` skill.
 
 ## Arguments
 Format: `[--search <query>]`

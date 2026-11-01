@@ -6,6 +6,8 @@ Arguments: <name> --project <project> --type <postgres|mysql|mariadb|mongo|redis
 
 # Create Database
 
+Follow the `mcp-patterns` skill (`./skills/mcp-patterns/SKILL.md`) for the database tool pattern and usage notes; read it before the first call.
+
 Create and deploy a database instance in a Dokploy project.
 
 ## Arguments

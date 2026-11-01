@@ -6,6 +6,8 @@ Arguments: <task-name> [--type basic|schema|cron|agent]
 
 # Create Task
 
+Method and rules: the `trigger-dev:task-development` skill.
+
 1. Parse arguments:
    - `task-name` (required): kebab-case task identifier
    - `--type` (optional, default: basic): basic, schema, cron, agent

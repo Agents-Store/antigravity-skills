@@ -2,11 +2,13 @@
 
 List all product attributes with their values
 
-Arguments: --search <query>
+Arguments: [--search <query>]
 
 # List Attributes
 
 List all product attributes in the Teleshop store.
+
+Method and rules: the `teleshop-ops:attribute-management` skill.
 
 ## Arguments
 Format: `[--search <query>]`

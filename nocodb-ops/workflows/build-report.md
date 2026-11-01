@@ -8,6 +8,8 @@ Arguments: <table-name> [aggregation-type] [field]
 
 Build an aggregation report from a NocoDB table.
 
+The aggregation types, the segmented reports and the dashboard pattern are written down in `./skills/views-and-reports/SKILL.md`; read it before the first step.
+
 ## Arguments
 
 Parse from "$ARGUMENTS":

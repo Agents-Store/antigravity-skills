@@ -7,7 +7,7 @@ Arguments: [selector] [--adopt-duplicates] [--restart] [--yes]
 # Shared skills and plugins — sync
 
 Parse `[selector] [--adopt-duplicates] [--restart] [--yes]` from "$ARGUMENTS". Scripts live in
-`./scripts/` and are named bare below. Load `shared-assets` first — it owns the load order,
+`./scripts/` and are named bare below. Load `./skills/shared-assets/SKILL.md` first — it owns the load order,
 the shadow trap, the install policy, ownership and the four verification levels. Mutation: plan first, `--yes` later.
 
 ## Process

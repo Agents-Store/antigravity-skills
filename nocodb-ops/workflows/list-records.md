@@ -8,6 +8,8 @@ Arguments: <table-name> [where-filter]
 
 Query records from a NocoDB table with optional filtering and sorting.
 
+Listing, counting and paging rules are written down in `./skills/record-management/SKILL.md`; read it before the first step.
+
 ## Arguments
 
 Parse from "$ARGUMENTS":
