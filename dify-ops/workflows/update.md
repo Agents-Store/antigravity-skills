@@ -20,7 +20,7 @@ The Bash tool does not keep shell variables between calls. Step 2 prints `DIFY_R
 - `main` — merge `origin/main`. Its deployment files track development and can drift from the latest release; use it only when asked
 - empty — the latest stable tag (`MAJOR.MINOR.PATCH`). `rc`, `alpha` and `beta` tags are never picked
 - `--yes` — apply right after printing the plan, without the confirmation question. It never skips the Weaviate STOP, the dirty-tree question or conflict resolution
-- `--weaviate-staged` — you already stepped the bundled Weaviate volume to `1.39.2` with the official runbook (Step 2, check 5). It lifts that one STOP and nothing else
+- `--weaviate-staged` — you already stepped the bundled Weaviate volume up to the version the target release pins (`1.39.2` for 1.17.1, `1.39.13` from 1.18.0) with the official runbook (Step 2, check 5). It lifts that one STOP and nothing else
 
 ## Step 1: Detect Working Directory
 
@@ -64,11 +64,11 @@ DIRTY=$(git status --porcelain)
 - `dev` missing — the official `git clone --branch <tag>` leaves a detached HEAD and no `dev`. Tell the user Step 5 will run `git switch -c dev` before merging.
 - The rollback resets `dev` to `DEV_TIP`, never to `HEAD`: when the update starts on `main` or on a detached HEAD, `HEAD` is not where `dev` is, and resetting `dev` to it would throw away the user's customization commits. It then returns to `START_BRANCH` (or `START_COMMIT`).
 
-**2. Docker Compose >= 2.24.0** (the compose files use `env_file … required: false`):
+**2. Docker Compose >= 2.35.0** (1.19.0 raised the minimum: below it a root `.env` value does not override the defaults files of a service):
 
 ```bash
 CV=$(docker compose version --short 2>/dev/null | sed 's/^v//')
-[ "$(printf '%s\n' "$CV" 2.24.0 | sort -V | head -1)" = 2.24.0 ] || { echo "ERROR: Docker Compose >= 2.24.0 required (found: ${CV:-none})"; exit 1; }
+[ "$(printf '%s\n' "$CV" 2.35.0 | sort -V | head -1)" = 2.35.0 ] || { echo "ERROR: Docker Compose >= 2.35.0 required (found: ${CV:-none})"; exit 1; }
 ```
 
 **3. Docker project name** — read it from the labels of the running `api` container of this directory, never parse container names:
@@ -109,7 +109,7 @@ echo "Current: ${CUR:-unknown}   Target: $TARGET (images $TGT)"
 
 An explicit pre-release tag is allowed with a warning that it is not for production.
 
-**5. Weaviate migration gate.** From Dify 1.17.1 the bundled Weaviate server moves from `1.27.0` to `1.39.2`. An existing data volume cannot cross 12 minor versions in one step; pulling and restarting silently and permanently breaks vector search. The gate fires only for a bundled Weaviate that holds data, an update that crosses `1.17.1`, and no `--weaviate-staged`. A fresh install, an external Weaviate and every other `VECTOR_STORE` are not affected.
+**5. Weaviate migration gate.** From Dify 1.17.1 the bundled Weaviate server moves from `1.27.0` to `1.39.2` (`1.39.13` from 1.18.0). An existing data volume cannot cross 12 minor versions in one step; pulling and restarting silently and permanently breaks vector search. The gate fires only for a bundled Weaviate that holds data, an update that crosses `1.17.1`, and no `--weaviate-staged`. A fresh install, an external Weaviate and every other `VECTOR_STORE` are not affected.
 
 ```bash
 cd "$DOCKER_DIR"
@@ -120,7 +120,7 @@ older() { [ "$(printf '%s\n' "$1" "$2" | sort -V | head -1)" != "$2" ]; }   # tr
 # CUR, TGT and STAGED come from check 4
 if [ "$VS" = weaviate ] && [ "$WV_DATA" = yes ] && [ "$STAGED" != yes ] \
    && older "$CUR" 1.17.1 && { [ -z "$TGT" ] || ! older "$TGT" 1.17.1; }; then
-  echo "STOP: this update crosses Dify 1.17.1 and the bundled Weaviate moves 1.27.0 -> 1.39.2."
+  echo "STOP: this update crosses Dify 1.17.1 and the bundled Weaviate moves 1.27.0 -> 1.39.x."
   echo "An existing volume cannot jump 12 minor versions; a plain pull + up -d breaks vector search silently."
   echo "Nothing was changed. Runbook: https://docs.dify.ai/en/self-host/deploy/troubleshooting/weaviate-server-migration-path"
   exit 1
@@ -128,22 +128,26 @@ fi
 echo "Weaviate gate: pass (VECTOR_STORE=$VS, volumes/weaviate data: $WV_DATA)"
 ```
 
-On STOP do not run Step 4 or later: no merge, no `docker compose up -d`. Hand the user the runbook (summary in the `update-workflow` skill: back up the volume, step through every minor `1.27` → `1.38`, land exactly on `1.39.2`, always stop with `docker compose stop -t -1 weaviate`, never `docker kill` or `rm -f`), then offer three ways forward and ask which one:
+On STOP do not run Step 4 or later: no merge, no `docker compose up -d`. Hand the user the runbook (summary in the `update-workflow` skill: back up the volume, step through every minor `1.27` → `1.38`, land on the version the target release pins (`1.39.2` for 1.17.1, `1.39.13` from 1.18.0 — not a newer patch), always stop with `docker compose stop -t -1 weaviate`, never `docker kill` or `rm -f`), then offer three ways forward and ask which one:
 
-1. Follow the runbook, confirm with `/v1/meta` that the server reports `1.39.2`, then run `/dify-ops:update <tag> --weaviate-staged`.
+1. Follow the runbook, confirm with `/v1/meta` that the server reports the version the target pins, then run `/dify-ops:update <tag> --weaviate-staged`.
 2. Update only to a release below `1.17.1` (for example `1.17.0`); the gate does not fire there.
 3. Move to another vector store or an external Weaviate first (re-index the knowledge bases), then update.
 
 If `CUR` or `TGT` could not be read the gate fails closed and stops the same way.
 
-**Release notes for every step.** For each stable tag after `CUR` up to the target, show only the three sections that matter:
+**Release notes for every step.** For each stable tag after `CUR` up to the target, show only the sections that matter (the headings vary by release: environment variable or configuration changes, database migrations, upgrade guide):
 
 ```bash
 cd "$DIFY_ROOT"
 git tag --list | grep -E "$STABLE" | sort -V | awk -v lo="$CUR" -v hi="$TARGET" 'p{print} $0==lo{p=1} $0==hi{exit}' | while read -r T; do
   echo "=== $T ==="
   gh release view "$T" -R langgenius/dify --json body -q .body 2>/dev/null \
-    | awk '/^## (Environment Variable Changes|Database Migrations|Upgrade Guide)/{p=1} /^## /&&!/^## (Environment Variable Changes|Database Migrations|Upgrade Guide)/{p=0} p'
+    | awk '{ l = tolower($0) }
+         l ~ /^##+ (environment variable changes|configuration and integration changes|database migrations|upgrade guide)/ { p = 1 }
+         l ~ /^## / && l !~ /^## (environment variable changes|configuration and integration changes|database migrations|upgrade guide)/ { p = 0 }
+         l ~ /^### (detailed changes|developer spotlight)/ { p = 0 }
+         p'
 done
 ```
 
@@ -156,7 +160,7 @@ Print the plan with all eight blocks, then stop and ask "Apply this plan?" unles
 ```text
 DIFY UPDATE PLAN   <CUR> -> <TARGET>
 TARGET    <DIFY_ROOT> · compose project <PROJECT_NAME> · merge <TARGET_REF> into dev
-PRECHECK  tree clean · Compose >= 2.24.0 · Weaviate gate: pass | n/a (<VECTOR_STORE>) · release notes read
+PRECHECK  tree clean · Compose >= 2.35.0 · Weaviate gate: pass | n/a (<VECTOR_STORE>) · release notes read
 CHANGE    git merge <TARGET_REF> · env sync (.env, envs/) · docker compose pull && docker compose up -d
 BACKUP    <backup-dir>: docker-compose.yaml, .env, volumes.tgz — the whole stack is down while volumes/ is archived
 IMPACT    downtime from down to up · start-up runs DB migrations, which are one-way · <changed env defaults, new services>
@@ -175,16 +179,6 @@ export COMPOSE_PROJECT_NAME=<project> && cd <DOCKER_DIR> && docker compose down 
 
 ## Step 4: Backup, stack down
 
-Order matters: stop, archive, and only then change anything. The archive is taken from stopped containers, so postgres and Weaviate files are consistent.
-
-```bash
-cd "$DOCKER_DIR"
-umask 077                                                  # the archive holds the database and the storage key
-SUDO=""; [ "$(id -u)" -ne 0 ] && SUDO=sudo
-TARGET="<TARGET>"; TARGET_REF="<TARGET_REF>"               # from Step 2
-# git state for the rollback — nothing has touched git yet
-START_BRANCH=$(git -C "$DIFY_ROOT" branch --show-current)
-START_COMMIT=$(git -C "$DIFY_ROOT" rev-parse HEAD)
-DEV_TIP=$(git -C "$DIFY_ROOT" rev-parse -q --verify refs/heads/dev || e
+Order matters: stop, archive, and only then change anything. The 
 
 <!-- truncated: content exceeds the target's size limit -->
